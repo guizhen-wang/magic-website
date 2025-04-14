@@ -1,1 +1,22 @@
-Hello, world
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IP Viewer</title>
+</head>
+<body>
+  <h1>Your IP address is:</h1>
+  <p id="ip">Loading...</p>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('ip').innerText = data.ip;
+      })
+      .catch(err => {
+        document.getElementById('ip').innerText = 'Error fetching IP';
+      });
+  </script>
+</body>
+</html>
+
